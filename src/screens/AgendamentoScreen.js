@@ -28,10 +28,10 @@ const AgendamentoScreen = ({ navigation }) => {
     rg: '',
     celular: '',
     observacao: '',
-    dentista: '', // Novo campo para selecionar o dentista
+    dentista: '', 
   });
 
-  // Carrega os agendamentos e dentistas do AsyncStorage
+  
   useFocusEffect(
     React.useCallback(() => {
       const carregarDados = async () => {
@@ -102,7 +102,7 @@ const AgendamentoScreen = ({ navigation }) => {
         rg: '',
         celular: '',
         observacao: '',
-        dentista: '', // Limpa o campo do dentista
+        dentista: '', 
       });
     } catch (error) {
       setMensagem('Erro ao salvar agendamento');
@@ -115,10 +115,10 @@ const AgendamentoScreen = ({ navigation }) => {
       const agendamentoCancelado = agendamentos.find((item) => item.id === id);
       if (!agendamentoCancelado) return;
 
-      // Remove o agendamento da lista
+     
       const novosAgendamentos = agendamentos.filter((item) => item.id !== id);
 
-      // Libera o horário cancelado
+   
       const horariosDisponiveis = await AsyncStorage.getItem('configHorarios');
       let horariosLiberados = horariosDisponiveis ? JSON.parse(horariosDisponiveis) : [];
       if (!horariosLiberados.includes(agendamentoCancelado.horario)) {
@@ -126,9 +126,9 @@ const AgendamentoScreen = ({ navigation }) => {
         await AsyncStorage.setItem('configHorarios', JSON.stringify(horariosLiberados));
       }
 
-      // Atualiza a lista de agendamentos
+     
       await AsyncStorage.setItem('agendamentos', JSON.stringify(novosAgendamentos));
-      setAgendamentos(novosAgendamentos); // Atualiza o estado
+      setAgendamentos(novosAgendamentos); 
       setMensagem('Agendamento cancelado com sucesso!');
     } catch (error) {
       setMensagem('Erro ao cancelar agendamento');

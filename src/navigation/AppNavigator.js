@@ -19,14 +19,14 @@ const AppNavigator = () => {
       <Stack.Screen
         name="Login"
         component={LoginScreen}
-        options={{ headerShown: false }} // Esconde o header na tela de login
+        options={{ headerShown: false }} 
       />
       <Stack.Screen
         name="Agendamento"
         component={AgendamentoScreen}
         options={{ 
           title: 'Agendamentos',
-          headerBackTitleVisible: false // Remove o texto "Voltar" no iOS
+          headerBackTitleVisible: false 
         }}
       />
     </Stack.Navigator>

@@ -16,21 +16,21 @@ const CadastroDentistaScreen = ({ navigation }) => {
     }
 
     const novoDentista = {
-      id: Date.now().toString(), // Gera um ID único
+      id: Date.now().toString(), 
       nome,
       especialidade,
       crm,
     };
 
     try {
-      // Recupera a lista atual de dentistas
+     
       const dentistasSalvos = await AsyncStorage.getItem('dentistas');
       const dentistas = dentistasSalvos ? JSON.parse(dentistasSalvos) : [];
 
-      // Adiciona o novo dentista à lista
+    
       dentistas.push(novoDentista);
 
-      // Salva a lista atualizada no AsyncStorage
+     
       await AsyncStorage.setItem('dentistas', JSON.stringify(dentistas));
 
       setMensagem('Dentista cadastrado com sucesso!');

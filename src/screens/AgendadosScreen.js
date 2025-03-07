@@ -9,7 +9,7 @@ const AgendadosScreen = ({ navigation }) => {
   const [agendamentos, setAgendamentos] = useState([]);
   const [carregando, setCarregando] = useState(true);
 
-  // Carrega os agendamentos do AsyncStorage
+  
   useEffect(() => {
     const carregarAgendamentos = async () => {
       try {
@@ -17,7 +17,7 @@ const AgendadosScreen = ({ navigation }) => {
         if (dados) {
           const agendamentosSalvos = JSON.parse(dados);
           if (Array.isArray(agendamentosSalvos)) {
-            // Filtra itens inválidos (sem id)
+           
             const agendamentosValidos = agendamentosSalvos.filter((item) => item.id);
             setAgendamentos(agendamentosValidos);
           } else {
@@ -47,22 +47,22 @@ const AgendadosScreen = ({ navigation }) => {
     }
   };
 
-  // Cancela um agendamento
+
   const cancelarAgendamento = async (id) => {
     try {
       const novosAgendamentos = agendamentos.filter((item) => item.id !== id);
       await AsyncStorage.setItem('agendamentos', JSON.stringify(novosAgendamentos));
-      setAgendamentos(novosAgendamentos); // Atualiza o estado
+      setAgendamentos(novosAgendamentos); 
       console.log('Agendamento cancelado com sucesso!');
     } catch (error) {
       console.error('Erro ao cancelar agendamento:', error);
     }
   };
 
-  // Renderiza cada item da lista de agendamentos
+
   const renderItem = ({ item }) => {
     if (!item.id || !item.data) {
-      return null; // Ignora itens sem id ou data
+      return null; 
     }
 
     return (
